@@ -4,11 +4,15 @@ An independent, lightweight reference website for PUBG Mobile nickname character
 
 ## Features
 
-- Searchable character library covering Latin letters, digits, selected writing systems, and decorative Unicode symbols
-- Nickname builder with live preview and copy controls
-- Character-count estimates for grapheme clusters, Unicode code points, and UTF-16 code units
-- Naming guidance that distinguishes official documentation from unverified compatibility claims
+- Searchable character library (800 glyphs in 24 groups): Latin letters, digits, selected writing systems, decorative symbols, brackets, arrows, and five Mathematical Alphanumeric styles
+- Search by character, script name, keyword or Unicode code point (`U+2605`); category chips with live counts; "Copy set" for any group
+- Character inspector: code point, Unicode block, UTF-16 and UTF-8 size, HTML entity, JS escape and NFKC result
+- Nickname builder: inserts at the cursor, grapheme-aware delete, live preview, saved names (kept in this browser only)
+- Local checks that flag numeric-only names, invisible characters, emoji, combining marks, lookalike scripts and NFKC changes, clearly labelled as heuristics
+- Length estimates for visible characters, code points, UTF-16 units and UTF-8 bytes
+- Naming guidance that separates official documentation from unverified compatibility claims
 - Links to official PUBG MOBILE and Unicode references
+- Light and dark themes (follows the system, remembers your choice), keyboard navigation in the library (arrow keys, Home/End), reduced-motion support
 
 ## Run locally
 
