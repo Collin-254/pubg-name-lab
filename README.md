@@ -21,9 +21,23 @@ No build tools or dependencies are required. Open `index.html` in a modern brows
 ## Deploy on Vercel
 
 1. Create a public GitHub repository named `pubg-name-lab`.
-2. Upload `index.html` and `README.md` to the repository root.
+2. Upload everything in this folder to the repository root, keeping the `icons/` folder: `index.html`, `404.html`, `favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, `og-image.png`, `site.webmanifest`, `robots.txt`, `vercel.json`, `icons/` and `README.md`.
 3. In Vercel, choose **Add New → Project**, import `pubg-name-lab`, and deploy.
 4. No framework preset, build command, or output directory is needed for this static HTML site.
+
+## Project files
+
+| File | Purpose |
+| --- | --- |
+| `index.html` | The whole site (HTML, CSS and JS in one file) |
+| `404.html` | Custom not-found page (Vercel serves it automatically) |
+| `favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, `icons/` | Original crosshair icon set, including a maskable icon for Android |
+| `og-image.png` | 1200×630 social preview image |
+| `site.webmanifest` | Lets the site be installed to a home screen |
+| `robots.txt` | Allows crawling |
+| `vercel.json` | Security headers (CSP, nosniff, frame denial) and icon caching |
+
+After you have a domain, add a canonical link in `index.html` and change the `og:image` and `twitter:image` values to absolute URLs (for example `https://your-domain.com/og-image.png`), because social networks do not resolve relative image paths. Add a `sitemap.xml` at the same time if you want one.
 
 ## Accuracy note
 
