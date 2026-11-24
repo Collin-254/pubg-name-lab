@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f2eee3">
 <title>PUBG Name Lab — Stylish Name Generator & Character Library</title>
-<meta name="description" content="Type your name and copy stylish PUBG Mobile nickname variants. Browse 800 Unicode characters, build a name by hand, and see what is officially documented about nickname rules.">
+<meta name="description" content="Type your name and copy stylish PUBG Mobile nickname variants. Browse 2,700+ Unicode characters, including combining marks and combos like ×͜×, build a name by hand, and see what is officially documented about nickname rules.">
 <meta name="application-name" content="PUBG Name Lab">
 <meta name="apple-mobile-web-app-title" content="Name Lab">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -190,12 +190,14 @@ h3{font:600 17px/1.3 var(--sans);margin:0 0 6px}
 .group-head .count{font:500 12px/1 var(--mono);color:var(--muted);margin-left:8px;vertical-align:middle}
 .glyphs{display:flex;flex-wrap:wrap;padding:0 1px 1px 0}
 .glyph{font:400 22px/1 var(--glyph);width:48px;height:48px;margin:0 -1px -1px 0;display:grid;place-items:center;background:var(--panel);color:var(--ink);border:1px solid var(--rule);border-radius:0;cursor:pointer;padding:0;position:relative;transition:background .1s}
+.glyph.wide{width:auto;min-width:48px;padding:0 12px;font-size:20px;white-space:nowrap}
 .glyph:hover{background:var(--ink);color:var(--bg);border-color:var(--ink);z-index:1}
 .glyph:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;z-index:2;border-radius:0}
 .glyph:active{background:var(--accent);color:var(--on-accent)}
 .glyphs .glyph:first-child{border-top-left-radius:var(--r)}
 .inspector{position:sticky;top:150px;border:1px solid var(--ink);background:var(--panel);border-radius:var(--r);padding:20px}
 .insp-glyph{font:400 88px/1 var(--glyph);height:130px;display:grid;place-items:center;background:var(--bg);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+.insp-glyph.long{font-size:44px;padding:0 8px;white-space:nowrap}
 .insp-glyph.ph{font-size:15px;color:var(--muted);padding:0 20px;text-align:center;font-family:var(--sans)}
 .insp-list{margin:16px 0 0;font-size:13.5px}
 .insp-list div{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--rule)}
@@ -538,7 +540,7 @@ const graphemes=s=>seg?[...seg.segment(s)].map(x=>x.segment):[...s];
 const hx=n=>n.toString(16).toUpperCase().padStart(4,'0');
 const cpOf=ch=>[...ch].map(c=>'U+'+hx(c.codePointAt(0))).join(' ');
 const utf8=s=>new TextEncoder().encode(s).length;
-const BLOCKS=[[0x0,0x7F,'Basic Latin'],[0x370,0x3FF,'Greek and Coptic'],[0x400,0x4FF,'Cyrillic'],[0x590,0x5FF,'Hebrew'],[0x600,0x6FF,'Arabic'],[0xE00,0xE7F,'Thai'],[0xF00,0xFFF,'Tibetan'],[0x10A0,0x10FF,'Georgian'],[0x2000,0x206F,'General Punctuation'],[0x2100,0x214F,'Letterlike Symbols'],[0x2190,0x21FF,'Arrows'],[0x2200,0x22FF,'Mathematical Operators'],[0x2300,0x23FF,'Miscellaneous Technical'],[0x2600,0x26FF,'Miscellaneous Symbols'],[0x2700,0x27BF,'Dingbats'],[0x27C0,0x27EF,'Misc. Mathematical Symbols-A'],[0x2900,0x297F,'Supplemental Arrows-B'],[0x2B00,0x2BFF,'Misc. Symbols and Arrows'],[0x3000,0x303F,'CJK Symbols and Punctuation'],[0x3040,0x309F,'Hiragana'],[0x30A0,0x30FF,'Katakana'],[0x3400,0x4DBF,'CJK Ext. A'],[0x4E00,0x9FFF,'CJK Unified Ideographs'],[0xA9C0,0xA9DF,'Javanese'],[0xAC00,0xD7AF,'Hangul Syllables'],[0x1D400,0x1D7FF,'Math Alphanumeric Symbols']];
+const BLOCKS=[[0x80,0xFF,'Latin-1 Supplement'],[0x100,0x17F,'Latin Extended-A'],[0x180,0x24F,'Latin Extended-B'],[0x250,0x2AF,'IPA Extensions'],[0x2B0,0x2FF,'Spacing Modifier Letters'],[0x300,0x36F,'Combining Diacritical Marks'],[0x480,0x489,'Cyrillic (historic)'],[0x530,0x58F,'Armenian'],[0x900,0x97F,'Devanagari'],[0x13A0,0x13FF,'Cherokee'],[0x1400,0x167F,'Canadian Aboriginal Syllabics'],[0x16A0,0x16FF,'Runic'],[0x1D00,0x1D7F,'Phonetic Extensions'],[0x2070,0x209F,'Superscripts and Subscripts'],[0x20A0,0x20CF,'Currency Symbols'],[0x2150,0x218F,'Number Forms'],[0x2460,0x24FF,'Enclosed Alphanumerics'],[0x2500,0x257F,'Box Drawing'],[0x2580,0x259F,'Block Elements'],[0x25A0,0x25FF,'Geometric Shapes'],[0x2800,0x28FF,'Braille Patterns'],[0x2E80,0x2FDF,'CJK Radicals'],[0xA720,0xA7FF,'Latin Extended-D'],[0xFF00,0xFFEF,'Halfwidth and Fullwidth Forms'],[0x1F100,0x1F1FF,'Enclosed Alphanumeric Supplement'],[0x0,0x7F,'Basic Latin'],[0x370,0x3FF,'Greek and Coptic'],[0x400,0x4FF,'Cyrillic'],[0x590,0x5FF,'Hebrew'],[0x600,0x6FF,'Arabic'],[0xE00,0xE7F,'Thai'],[0xF00,0xFFF,'Tibetan'],[0x10A0,0x10FF,'Georgian'],[0x2000,0x206F,'General Punctuation'],[0x2100,0x214F,'Letterlike Symbols'],[0x2190,0x21FF,'Arrows'],[0x2200,0x22FF,'Mathematical Operators'],[0x2300,0x23FF,'Miscellaneous Technical'],[0x2600,0x26FF,'Miscellaneous Symbols'],[0x2700,0x27BF,'Dingbats'],[0x27C0,0x27EF,'Misc. Mathematical Symbols-A'],[0x2900,0x297F,'Supplemental Arrows-B'],[0x2B00,0x2BFF,'Misc. Symbols and Arrows'],[0x3000,0x303F,'CJK Symbols and Punctuation'],[0x3040,0x309F,'Hiragana'],[0x30A0,0x30FF,'Katakana'],[0x3400,0x4DBF,'CJK Ext. A'],[0x4E00,0x9FFF,'CJK Unified Ideographs'],[0xA9C0,0xA9DF,'Javanese'],[0xAC00,0xD7AF,'Hangul Syllables'],[0x1D400,0x1D7FF,'Math Alphanumeric Symbols']];
 const blockOf=cp=>{const b=BLOCKS.find(b=>cp>=b[0]&&cp<=b[1]);return b?b[2]:'Other'};
 
 /* ---------- Library data ---------- */
@@ -563,16 +565,61 @@ const groups=[
 {id:'flowers',title:'Flowers & ornaments',desc:'Floral and ornamental marks.',type:'decor',kw:'flower floral ornament',chars:'❀✿❁✾❋⚜⍟⟡'},
 {id:'tibetan',title:'Tibetan / Indic-style ornaments',desc:'Decorative Unicode marks; font and game acceptance vary.',type:'decor',kw:'tibetan ornament swirl',chars:'࿐༄༒࿇࿈'},
 {id:'cjkmarks',title:'CJK and Japanese-style marks',desc:'Popular decorative characters often seen in stylized player names.',type:'decor',kw:'stylized cjk japanese marks',chars:'亗彡〆ツシッ乙卄メノ愛'},
-{id:'brackets',title:'Brackets & frames',desc:'Decorative bracket pairs. Try both opening and closing characters.',type:'brackets',kw:'bracket frame corner wrap',chars:'『』「」【】〖〗꧁꧂༺༻〈〉《》〔〕〘〙'},
-{id:'arrows',title:'Arrows & pointers',desc:'Directional and decorative arrow symbols.',type:'arrows',kw:'arrow pointer direction',chars:'→←↑↓↗↘↙↖➜➤➳➵➸➺➻'},
-{id:'m-bold',title:'Mathematical bold',desc:MATH_NOTE,type:'math',kw:'bold styled fancy',chars:mathAlpha(0x1D400,0x1D41A)+mathDigits(0x1D7CE)},
-{id:'m-fraktur',title:'Mathematical fraktur',desc:MATH_NOTE+' A few letters live in the Letterlike Symbols block instead.',type:'math',kw:'fraktur gothic blackletter styled fancy',chars:mathAlpha(0x1D504,0x1D51E,{C:'\u212D',H:'\u210C',I:'\u2111',R:'\u211C',Z:'\u2128'})},
-{id:'m-double',title:'Mathematical double-struck',desc:MATH_NOTE+' A few letters live in the Letterlike Symbols block instead.',type:'math',kw:'double struck outline blackboard styled fancy',chars:mathAlpha(0x1D538,0x1D552,{C:'\u2102',H:'\u210D',N:'\u2115',P:'\u2119',Q:'\u211A',R:'\u211D',Z:'\u2124'})+mathDigits(0x1D7D8)},
-{id:'m-script',title:'Mathematical script',desc:MATH_NOTE+' A few letters live in the Letterlike Symbols block instead.',type:'math',kw:'script cursive calligraphy styled fancy',chars:mathAlpha(0x1D49C,0x1D4B6,{B:'\u212C',E:'\u2130',F:'\u2131',H:'\u210B',I:'\u2110',L:'\u2112',M:'\u2133',R:'\u211B',e:'\u212F',g:'\u210A',o:'\u2134'})},
-{id:'m-mono',title:'Mathematical monospace',desc:MATH_NOTE,type:'math',kw:'monospace typewriter styled fancy',chars:mathAlpha(0x1D670,0x1D68A)+mathDigits(0x1D7F6)}
+{id:'brackets',title:'Brackets & frames',desc:'Decorative bracket pairs. Try both opening and closing characters.',type:'brackets',kw:'bracket frame corner wrap',chars:'『』「」【】〖〗꧁꧂༺༻〈〉《》〔〕〘〙❨❩❪❫❬❭❮❯❰❱❲❳❴❵⟦⟧⟨⟩⟪⟫⦅⦆⦃⦄⌈⌉⌊⌋｢｣‹›«»❝❞〚〛'},
+{id:'arrows',title:'Arrows & pointers',desc:'Directional and decorative arrow symbols.',type:'arrows',kw:'arrow pointer direction',chars:'→←↑↓↔↕↗↘↙↖⇒⇐⇑⇓⇔⇄⇅↺↻➔➜➝➞➟➠➡➢➣➤➥➦➧➨➩➪➫➬➭➮➯➱➳➵➸➺➻⟵⟶⟷⇝⇜↝↜⇢⇠'},
+{id:'m-bold',title:'Mathematical bold',desc:MATH_NOTE,type:'styled',kw:'bold styled fancy',chars:mathAlpha(0x1D400,0x1D41A)+mathDigits(0x1D7CE)},
+{id:'m-fraktur',title:'Mathematical fraktur',desc:MATH_NOTE+' A few letters live in the Letterlike Symbols block instead.',type:'styled',kw:'fraktur gothic blackletter styled fancy',chars:mathAlpha(0x1D504,0x1D51E,{C:'\u212D',H:'\u210C',I:'\u2111',R:'\u211C',Z:'\u2128'})},
+{id:'m-double',title:'Mathematical double-struck',desc:MATH_NOTE+' A few letters live in the Letterlike Symbols block instead.',type:'styled',kw:'double struck outline blackboard styled fancy',chars:mathAlpha(0x1D538,0x1D552,{C:'\u2102',H:'\u210D',N:'\u2115',P:'\u2119',Q:'\u211A',R:'\u211D',Z:'\u2124'})+mathDigits(0x1D7D8)},
+{id:'m-script',title:'Mathematical script',desc:MATH_NOTE+' A few letters live in the Letterlike Symbols block instead.',type:'styled',kw:'script cursive calligraphy styled fancy',chars:mathAlpha(0x1D49C,0x1D4B6,{B:'\u212C',E:'\u2130',F:'\u2131',H:'\u210B',I:'\u2110',L:'\u2112',M:'\u2133',R:'\u211B',e:'\u212F',g:'\u210A',o:'\u2134'})},
+{id:'m-mono',title:'Mathematical monospace',desc:MATH_NOTE,type:'styled',kw:'monospace typewriter styled fancy',chars:mathAlpha(0x1D670,0x1D68A)+mathDigits(0x1D7F6)}
 ];
-groups.forEach(g=>{g.list=[...new Set([...g.chars])];g.text=(g.title+' '+g.desc+' '+(g.kw||'')).toLowerCase()});
-const CATS=[['all','All'],['latin','Latin & numbers'],['scripts','Other writing systems'],['decor','Decorative symbols'],['brackets','Brackets & frames'],['arrows','Arrows'],['math','Mathematical letters']];
+const R=(a,b)=>{let o='';for(let i=a;i<=b;i++)o+=String.fromCodePoint(i);return o};
+const EXTRA=[
+{id:'m-bolditalic',title:'Mathematical bold italic',desc:MATH_NOTE,type:'styled',kw:'bold italic slanted styled fancy',chars:mathAlpha(0x1D468,0x1D482)},
+{id:'m-italic',title:'Mathematical italic',desc:MATH_NOTE+' Lowercase h lives in Letterlike Symbols.',type:'styled',kw:'italic slanted styled fancy',chars:mathAlpha(0x1D434,0x1D44E,{h:'ℎ'})},
+{id:'m-boldscript',title:'Mathematical bold script',desc:MATH_NOTE,type:'styled',kw:'bold script cursive calligraphy styled fancy',chars:mathAlpha(0x1D4D0,0x1D4EA)},
+{id:'m-boldfraktur',title:'Mathematical bold fraktur',desc:MATH_NOTE,type:'styled',kw:'bold fraktur gothic blackletter styled fancy',chars:mathAlpha(0x1D56C,0x1D586)},
+{id:'m-sans',title:'Mathematical sans-serif',desc:MATH_NOTE,type:'styled',kw:'sans serif plain styled fancy',chars:mathAlpha(0x1D5A0,0x1D5BA)+mathDigits(0x1D7E2)},
+{id:'m-sansbold',title:'Mathematical sans-serif bold',desc:MATH_NOTE,type:'styled',kw:'sans serif bold styled fancy',chars:mathAlpha(0x1D5D4,0x1D5EE)+mathDigits(0x1D7EC)},
+{id:'m-sansitalic',title:'Mathematical sans-serif italic',desc:MATH_NOTE,type:'styled',kw:'sans serif italic slanted styled fancy',chars:mathAlpha(0x1D608,0x1D622)},
+{id:'m-sansbolditalic',title:'Mathematical sans-serif bold italic',desc:MATH_NOTE,type:'styled',kw:'sans serif bold italic slanted styled fancy',chars:mathAlpha(0x1D63C,0x1D656)},
+{id:'smallcaps',title:'Small capitals',desc:'Small capitals from IPA and Phonetic Extensions. There is no true small-capital q or x, so ǫ and x are the usual stand-ins.',type:'styled',kw:'small caps capitals phonetic ipa',chars:'ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀꜱᴛᴜᴠᴡxʏᴢ'},
+{id:'fullwidth',title:'Fullwidth letters & digits',desc:'Wide forms of Latin letters and digits from Halfwidth and Fullwidth Forms. NFKC folds them back to ordinary letters.',type:'styled',kw:'fullwidth wide vaporwave aesthetic',chars:R(0xFF21,0xFF3A)+R(0xFF41,0xFF5A)+R(0xFF10,0xFF19)},
+{id:'circled',title:'Circled letters & numbers',desc:'Enclosed Alphanumerics: circled capitals, lowercase and numbers.',type:'styled',kw:'circled bubble enclosed',chars:R(0x24B6,0x24E9)+'⓪'+R(0x2460,0x2473)},
+{id:'negcircled',title:'Negative circled',desc:'Filled circle capitals and digits. Some devices may draw these as colour emoji; emoji are not recommended.',type:'styled',kw:'negative circled filled black bubble',chars:R(0x1F150,0x1F169)+R(0x2776,0x277F)},
+{id:'squared',title:'Squared letters',desc:'Squared and negative squared capitals. Some devices may draw these as colour emoji; emoji are not recommended.',type:'styled',kw:'squared boxed negative square',chars:R(0x1F130,0x1F149)+R(0x1F170,0x1F189)},
+{id:'superscript',title:'Superscript',desc:'Raised letters and digits from Phonetic Extensions and Superscripts. There is no standard superscript q.',type:'styled',kw:'superscript raised tiny small',chars:'ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻ⁰¹²³⁴⁵⁶⁷⁸⁹ᴬᴮᴰᴱᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᴿᵀᵁⱽᵂ'},
+{id:'subscript',title:'Subscript',desc:'Lowered letters and digits. Only some letters have a subscript form.',type:'styled',kw:'subscript lowered tiny small',chars:'ₐₑₕᵢⱼₖₗₘₙₒₚᵣₛₜᵤᵥₓ₀₁₂₃₄₅₆₇₈₉'},
+{id:'cjk-letters',title:'CJK lookalike letters (A–Z)',desc:'Han and kana characters that resemble Latin capitals, in alphabetical order. Popular in stylised names; they are not the letters they look like.',type:'styled',lang:'ja',kw:'cjk lookalike letters alphabet kanji stylized',chars:'卂乃匚刀乇下厶卄工丁长乚从ん口尸㔿尺丂丅凵リ山乂丫乙'},
+{id:'canadian-letters',title:'Lookalike letters (Canadian syllabics & friends)',desc:'Syllabics, runic and Latin Extended characters that resemble capitals A–Z in order. Different characters from the letters they imitate.',type:'styled',kw:'lookalike canadian syllabics alphabet stylized aesthetic',chars:'ᗩᗷᑕᗪᗴᖴᘜᕼᓰᒍᛕᒪᗰᑎᗝᑭᑫᖇᔕ丅ᑌᐯᗯ᙭Ƴ乙'},
+{id:'latin1',title:'Accented Latin (Latin-1)',desc:'Accented letters from Western European languages, plus × and ÷.',type:'latin',kw:'accent accented diacritic latin1 european umlaut',chars:R(0xC0,0xFF)},
+{id:'latin-a',title:'Latin Extended-A',desc:'Letters used in Central and Eastern European languages, Turkish and more.',type:'latin',kw:'latin extended accent european polish czech turkish',chars:R(0x100,0x17F)},
+{id:'latin-look',title:'Latin lookalikes',desc:'Hooked, barred and crossed capitals from Latin Extended-B and neighbours.',type:'latin',kw:'latin lookalike hook bar stroke extended',chars:'ƁƇƊƑƓƘƝƤƬƲƵǶɃȻɆɌɎĦŦ'},
+{id:'armenian',title:'Armenian',desc:'Armenian capitals and lowercase letters.',type:'scripts',lang:'hy',kw:'armenian',chars:R(0x531,0x556)+R(0x561,0x586)},
+{id:'georgian',title:'Georgian',desc:'Georgian Mkhedruli letters.',type:'scripts',lang:'ka',kw:'georgian mkhedruli',chars:R(0x10D0,0x10FA)},
+{id:'devanagari',title:'Devanagari consonants & vowels',desc:'Hindi and Sanskrit letters. Complex shaping may render differently in other fonts.',type:'scripts',lang:'hi',kw:'devanagari hindi sanskrit indic',chars:R(0x905,0x939)},
+{id:'cherokee',title:'Cherokee',desc:'Cherokee syllabary capitals. Several resemble Latin letters.',type:'scripts',lang:'chr',kw:'cherokee syllabary lookalike',chars:R(0x13A0,0x13F5)},
+{id:'runic',title:'Runic',desc:'Runic letters from the Runic block.',type:'scripts',kw:'rune runic viking norse futhark',chars:R(0x16A0,0x16EA)},
+{id:'braille',title:'Braille patterns',desc:'A selection of Braille pattern characters, including a few dense blocks.',type:'scripts',kw:'braille dots pattern',chars:R(0x2801,0x283F)+'⣿⡇⢸⣀'},
+{id:'cjk-strokes',title:'CJK strokes & lookalikes',desc:'Simple CJK building blocks often used to stylise names.',type:'decor',lang:'ja',kw:'cjk strokes radical stylized lookalike kanji',chars:'丂乃乂乙工匚卂卜厶又口刀一丨丿丶尸山彡巳己ㄒㄩㄚ廾ㄥ'},
+{id:'dark',title:'Blades, bolts & dark symbols',desc:'Skull, blade and crest symbols. Some devices may draw these as colour emoji; emoji are not recommended.',type:'symbols',kw:'skull blade sword bolt lightning dark battle cross crest',chars:'☠☢☣☯☮☪✞✟✠☬⚔⚡☄⚰⚱✡☥☦'},
+{id:'cards-music',title:'Chess, cards & music',desc:'Chess pieces, card suits and musical notation.',type:'symbols',kw:'chess king queen card suit spade club diamond music note',chars:'♔♕♖♗♘♙♚♛♜♝♞♟♠♣♥♦♤♧♡♢♩♪♫♬♭♮♯'},
+{id:'misc',title:'Weather, tools & marks',desc:'Sun, moon, travel, checks and other common symbols.',type:'symbols',kw:'sun moon weather cloud snow plane scissors phone check cross smile male female',chars:'☀☁☂☃☼☽☾❄✈✂✆✉☎✓✔✗✘✖⌛⌚☺☻☹♀♂'},
+{id:'operators',title:'Math & operators',desc:'Operators and technical symbols, including the multiplication sign.',type:'symbols',kw:'math operator times multiply divide plus minus infinity sum root equals',chars:'×÷±∓∞≈≠≡≤≥≪≫√∑∏∆∇∂∫∈∉∩∪⊂⊃⊕⊗⊙⊘⊥∠∴∵∝⌘⌥✚✜✛✢✣✤✥'},
+{id:'shapes',title:'Geometric shapes',desc:'Triangles, circles, squares and diamonds.',type:'symbols',kw:'shape triangle circle square diamond geometric',chars:'▲△▼▽◀▶◁▷◆◇◈◉◊○●◎◍◐◑◒◓◔◕◖◗■□▢▣▤▥▦▧▨▩▪▫▬▭▮▯◢◣◤◥'},
+{id:'blocks',title:'Blocks & box drawing',desc:'Shading blocks and line-drawing characters.',type:'symbols',kw:'block shade box drawing line border frame',chars:'░▒▓█▀▄▌▐▁▂▃▅▆▇▏▎▍▋▊▉─│┌┐└┘├┤┬┴┼═║╔╗╚╝╠╣╦╩╬━┃┏┓┗┛'},
+{id:'currency',title:'Currency',desc:'Currency signs.',type:'symbols',kw:'currency money dollar euro pound yen bitcoin',chars:'$¢£¤¥€₩₹₽₿฿₺₦₱₫₪'},
+{id:'punct',title:'Punctuation & dividers',desc:'Bullets, dots, quotes, daggers and dividers.',type:'symbols',kw:'punctuation bullet dot dagger quote divider separator ellipsis',chars:'•·‣⁃‥…‹›«»¡¿‼⁇‡†§¶※‰′″‾⁂❝❞❛❜❮❯❰❱〃〝〞'},
+{id:'letterlike',title:'Letterlike & signs',desc:'Trademark-style signs, units and letter-shaped symbols.',type:'symbols',kw:'letterlike trademark copyright number sign ohm kelvin angstrom unit',chars:'℘℮№™℠℗®©℃℉℧℅℆ℓ℔ℯℊΩKÅ'},
+{id:'faceparts',title:'Face & eye parts',desc:'Characters often used to draw eyes, mouths and expressions.',type:'marks',kw:'face eye eyes mouth smile kaomoji emoticon',chars:'ʘಠ◕◔◉⊙⊗⊕◎Ꙩꙩωʖ‿︶°ᴗ‸'},
+{id:'combos',title:'Ready-made combos',desc:'Characters joined with combining marks, such as ×͜×. Combos are several code points, so they count as more than one character. Paste a combo into the search to find its parts.',type:'marks',kw:'combo combined kaomoji face eyes swoosh double breve tie joined x times lenny',items:['×͜×','×͡×','×͢×','♡͜♡','★͜★','•͜•','ღ͜ღ','ʘ͜ʘ','ಠ͜ಠ','⊙͜⊙','✿͜✿','ツ͜ツ','(ʘ‿ʘ)','(ಠ_ಠ)','(◕‿◕)','ʕ•ᴥ•ʔ','( ͡° ͜ʖ ͡°)','(づ｡◕‿‿◕｡)づ']},
+{id:'combining',title:'Combining marks',desc:'Combining Diacritical Marks, shown on a dotted circle. A mark attaches to the character before it, so add one after a letter. Heavy stacking may be stripped, rejected or render oddly.',type:'marks',marks:true,kw:'combining marks diacritics accent tie breve zalgo glitch overline strike underline',chars:R(0x300,0x36F)+'҉'}
+];
+groups.push(...EXTRA);
+const ORDER=['latin','styled','scripts','decor','symbols','brackets','arrows','marks'];
+groups.sort((a,b)=>ORDER.indexOf(a.type)-ORDER.indexOf(b.type));
+groups.forEach(g=>{g.list=g.items?g.items.slice():[...new Set([...g.chars])];g.text=(g.title+' '+g.desc+' '+(g.kw||'')).toLowerCase()});
+const CATS=[['all','All'],['latin','Latin & numbers'],['styled','Fancy letters'],['scripts','Other writing systems'],['decor','Decorative'],['symbols','Symbols & shapes'],['brackets','Brackets & frames'],['arrows','Arrows'],['marks','Combining & combos']];
 
 /* ---------- Feedback ---------- */
 const toastEl=$('#toast');let toastT;
@@ -684,12 +731,12 @@ function parseQuery(raw){
 function matchChars(g,p){
   if(!p.q)return g.list;
   if(p.single!==null&&!p.hasNonAscii&&/^[a-z0-9]$/.test(p.single))return g.list.filter(c=>c.toLowerCase()===p.single);
-  if(p.single!==null)return g.list.filter(c=>c===p.q);
+  if(p.single!==null)return g.list.filter(c=>[...c].includes(p.q));
   const groupHit=p.tokens.every(t=>g.text.includes(t));
   if(groupHit)return g.list;
   const pasted=p.hasNonAscii?new Set([...p.q]):null;
   return g.list.filter(c=>{
-    if(pasted&&pasted.has(c))return true;
+    if(pasted&&[...c].some(x=>pasted.has(x)))return true;
     if(p.hexes.length){const h=hx(c.codePointAt(0));return p.hexes.some(x=>h===x.padStart(4,'0')||h.startsWith(x))}
     return false;
   });
@@ -708,7 +755,7 @@ function render(){
     head.append(left,cp);
     const row=el('div','glyphs');row.setAttribute('role','group');row.setAttribute('aria-label',g.title+' characters');
     if(g.lang)row.lang=g.lang;
-    found.forEach((ch,i)=>{const b=el('button','glyph',ch);b.type='button';b.tabIndex=i?-1:0;b.dataset.ch=ch;b.title=ch+' · '+cpOf(ch);b.setAttribute('aria-label',ch+', '+cpOf(ch)+'. Add to nickname');row.append(b)});
+    found.forEach((ch,i)=>{const b=el('button','glyph'+([...ch].length>1?' wide':''),/^\p{M}$/u.test(ch)?'\u25CC'+ch:ch);b.type='button';b.tabIndex=i?-1:0;b.dataset.ch=ch;b.title=ch+' · '+cpOf(ch);b.setAttribute('aria-label',ch+', '+cpOf(ch)+'. Add to nickname');row.append(b)});
     sec.append(head,row);gridEl.append(sec);
   });
   if(!shownGroups){
@@ -725,9 +772,9 @@ $('#clearSearch').onclick=()=>{search.value='';render();search.focus()};
 const ip={g:$('#ipGlyph'),list:$('#ipList'),act:$('#ipActions')};
 function inspect(ch){
   if(!ch||ch===lastInspected)return;lastInspected=ch;
-  ip.g.className='insp-glyph';ip.g.textContent=ch;ip.list.hidden=false;ip.act.hidden=false;
+  ip.g.className='insp-glyph'+([...ch].length>2?' long':'');ip.g.textContent=/^\p{M}$/u.test(ch)?'\u25CC'+ch:ch;ip.list.hidden=false;ip.act.hidden=false;
   const c=ch.codePointAt(0),nf=ch.normalize('NFKC');
-  const rows=[['Code point',cpOf(ch)],['Block',blockOf(c)],['UTF-16 units',ch.length],['UTF-8 bytes',utf8(ch)],['HTML entity','&#x'+c.toString(16).toUpperCase()+';'],['JS escape',c>0xFFFF?'\\u{'+c.toString(16).toUpperCase()+'}':'\\u'+hx(c)],['NFKC',nf===ch?'unchanged':nf]];
+  const rows=[['Code point',cpOf(ch)],['Block',blockOf(c)],['UTF-16 units',ch.length],['UTF-8 bytes',utf8(ch)],['HTML entity',[...ch].map(x=>'&#x'+x.codePointAt(0).toString(16).toUpperCase()+';').join('')],['JS escape',[...ch].map(x=>{const k=x.codePointAt(0);return k>0xFFFF?'\\u{'+k.toString(16).toUpperCase()+'}':'\\u'+hx(k)}).join('')],['NFKC',nf===ch?'unchanged':nf]];
   ip.list.replaceChildren(...rows.map(([k,v])=>{const d=el('div');d.append(el('dt',null,k),el('dd',null,String(v)));return d}));
 }
 const unicodeLabel=ch=>ch+' · '+cpOf(ch);
@@ -773,16 +820,23 @@ boxes.forEach(b=>b.addEventListener('change',updateChecklist));
 /* ---------- Name generator ---------- */
 const gin=$('#genInput'),gout=$('#names'),gmore=$('#namesMore'),gclear=$('#genClear'),gstat=$('#genStatus');
 const MAPS={};
-['bold','fraktur','double','script','mono'].forEach(k=>{
+['bold','bolditalic','italic','fraktur','boldfraktur','double','script','boldscript','mono','sans','sansbold','sansitalic','sansbolditalic'].forEach(k=>{
   const str=[...groups.find(g=>g.id==='m-'+k).chars],m={};
   [...'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'].forEach((c,i)=>m[c]=str[i]);
   if(str.length>=62)[...'0123456789'].forEach((c,i)=>m[c]=str[52+i]);
   MAPS[k]=m;
 });
+(function(){
+  const sc=[...'ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀꜱᴛᴜᴠᴡxʏᴢ'],m1={},m2={},m3={};
+  [...'abcdefghijklmnopqrstuvwxyz'].forEach((c,i)=>{m1[c]=sc[i];m1[c.toUpperCase()]=sc[i];m3[c]=String.fromCodePoint(0x24D0+i);m3[c.toUpperCase()]=String.fromCodePoint(0x24B6+i)});
+  for(let c=0x21;c<=0x7E;c++)m2[String.fromCharCode(c)]=String.fromCodePoint(c+0xFEE0);
+  [...'123456789'].forEach((c,i)=>m3[c]=String.fromCodePoint(0x2460+i));m3['0']='\u24EA';
+  MAPS.smallcaps=m1;MAPS.fullwidth=m2;MAPS.circled=m3;
+})();
 const sty=(t,k)=>k?[...t].map(c=>MAPS[k][c]||c).join(''):t;
-const STYLES=[['bold','Bold'],['fraktur','Gothic'],['double','Outline'],['script','Script'],['mono','Monospace']];
+const STYLES=[['bold','Bold'],['bolditalic','Bold italic'],['italic','Italic'],['sans','Sans'],['sansbold','Sans bold'],['fraktur','Gothic'],['boldfraktur','Bold gothic'],['script','Script'],['boldscript','Bold script'],['double','Outline'],['mono','Monospace'],['smallcaps','Small caps'],['circled','Circled'],['fullwidth','Wide']];
 const DECOS=[['亗','ツ','Classic'],['『','』','Corner brackets'],['【','】','Lenticular'],['彡','彡','Swoosh'],['★','★','Stars'],['✦','✦','Sparkle'],['༺','༻','Ornate'],['꧁','꧂','Wings'],['','ツ','Tsu tag'],['','乙','Otsu tag'],['亗','','Kanji prefix'],['♡','♡','Hearts'],['❀','❀','Flowers'],['→','←','Arrows']];
-const COMBOS=[['bold',0],['bold',2],['bold',3],['fraktur',1],['fraktur',4],['script',5],['script',11],['double',0],['mono',3]];
+const COMBOS=[['bold',0],['bold',2],['bold',3],['fraktur',1],['fraktur',4],['script',5],['script',11],['double',0],['mono',3],['smallcaps',0],['smallcaps',1],['bolditalic',3],['sansbold',2],['boldscript',4],['circled',5]];
 const dec=(t,d)=>d[0]+t+d[1];
 function buildCards(name){
   const fancy=STYLES.map(([k,l])=>({cat:'fancy',label:l+' letters',text:sty(name,k)}));

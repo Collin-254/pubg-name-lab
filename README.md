@@ -4,8 +4,8 @@ An independent, lightweight reference website for PUBG Mobile nickname character
 
 ## Features
 
-- **Name generator at the top of the page:** type a name and get 28 styled variants (fancy letters, frames, symbols, combinations) with one-tap copy, a "Tweak" button that opens any result in the builder, and the last name remembered in the browser
-- Searchable character library (800 glyphs in 24 groups): Latin letters, digits, selected writing systems, decorative symbols, brackets, arrows, and five Mathematical Alphanumeric styles
+- **Name generator at the top of the page:** type a name and get 43 styled variants (fancy letters, frames and combinations) (fancy letters, frames, symbols, combinations) with one-tap copy, a "Tweak" button that opens any result in the builder, and the last name remembered in the browser
+- Searchable character library (about 2,750 characters in 63 groups): Latin and accented letters, 13 fancy-letter styles (bold, script, gothic, small caps, circled, fullwidth and more), lookalike letters, a dozen writing systems, decorative symbols, shapes, brackets, arrows, 113 combining marks and ready-made combos such as ×͜×
 - Search by character, script name, keyword or Unicode code point (`U+2605`); category chips with live counts; "Copy set" for any group
 - Character inspector: code point, Unicode block, UTF-16 and UTF-8 size, HTML entity, JS escape and NFKC result
 - Nickname builder: inserts at the cursor, grapheme-aware delete, live preview, saved names (kept in this browser only)
