@@ -95,7 +95,7 @@
   if (!rec.length) rb.append(h('p', { class: 'empty' }, 'No published records yet. Nothing has been reported or verified, so every game-acceptance claim on this site is currently “untested”. Be the first: run a pack above and submit it.'));
   rec.forEach(function (r) {
     rb.append(h('div', { class: 'logrow' }, h('div', { class: 'lg' }, r.target || r.text), ui.badge((r.verified ? 'verified-' : 'reported-') + r.result),
-      h('small', null, ['v' + r.game, r.platform, r.device, r.tested, r.note].filter(Boolean).join(' · ')), r.evidence ? h('a', { href: r.evidence, target: '_blank', rel: 'noopener' }, 'Evidence') : h('span')));
+      h('small', null, [r.game && 'v' + r.game, r.platform, r.device, r.tested, r.note].filter(Boolean).join(' · ')), r.evidence ? h('a', { href: r.evidence, target: '_blank', rel: 'noopener' }, 'Evidence') : h('span')));
   });
   log();
 })(window.PNL);

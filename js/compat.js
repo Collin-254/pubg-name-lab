@@ -38,7 +38,16 @@ window.PNL = window.PNL || {};
        { text, target, result:'ok'|'no', game:'x.y.z', platform:'Android|iOS|Emulator', device:'', tested:'YYYY-MM-DD',
          source:'maintainer'|'community', verified:true|false, evidence:'URL or ""', note:'' }
        "target" is the single character under test (omit it for a whole-name test). */
-    records: []
+    records: [
+      { text: 'CoolㅤGhost', target: 'ㅤ', result: 'ok', platform: 'Android', device: '', game: '', tested: '2026-11-25', source: 'community', verified: false, evidence: '', note: 'U+3164 Hangul filler: accepted unchanged in the name box. Preview only, not confirmed. Game version and device not recorded. One player.' },
+      { text: 'Cool\u2800Ghost', target: '\u2800', result: 'no', platform: 'Android', device: '', game: '', tested: '2026-11-25', source: 'community', verified: false, evidence: '', note: 'U+2800 braille blank: rejected in the name box. Preview only. Game version and device not recorded. One player.' },
+      { text: 'CoolīGhost', target: 'ī', result: 'alt', platform: 'Android', device: '', game: '', tested: '2026-11-25', source: 'community', verified: false, evidence: '', note: 'In the name box the game drew it as a space-like gap. Preview only, not confirmed. Game version and device not recorded. One player.' },
+      { text: 'CoolūGhost', target: 'ū', result: 'alt', platform: 'Android', device: '', game: '', tested: '2026-11-25', source: 'community', verified: false, evidence: '', note: 'The game changed it; the player did not describe how (the others were drawn as a gap). Preview only. Game version and device not recorded. One player.' },
+      { text: 'CoolēGhost', target: 'ē', result: 'alt', platform: 'Android', device: '', game: '', tested: '2026-11-25', source: 'community', verified: false, evidence: '', note: 'In the name box the game drew it as a space-like gap. Preview only, not confirmed. Game version and device not recorded. One player.' },
+      { text: 'CoolōGhost', target: 'ō', result: 'alt', platform: 'Android', device: '', game: '', tested: '2026-11-25', source: 'community', verified: false, evidence: '', note: 'In the name box the game drew it as a space-like gap. Preview only, not confirmed. Game version and device not recorded. One player.' },
+      { text: 'CoolįGhost', target: 'į', result: 'alt', platform: 'Android', device: '', game: '', tested: '2026-11-25', source: 'community', verified: false, evidence: '', note: 'In the name box the game drew it as a space-like gap. Preview only, not confirmed. Game version and device not recorded. One player.' },
+      { text: 'CoolĪGhost', target: 'Ī', result: 'alt', platform: 'Android', device: '', game: '', tested: '2026-11-25', source: 'community', verified: false, evidence: '', note: 'In the name box the game drew it as a space-like gap. Preview only, not confirmed. Game version and device not recorded. One player.' }
+    ]
   };
 
   /* Level definitions used by badges */
@@ -46,6 +55,8 @@ window.PNL = window.PNL || {};
     'official': { label: 'Official', cls: 'ev-official' },
     'verified-ok': { label: 'Verified: accepted', cls: 'ev-ok' },
     'verified-no': { label: 'Verified: rejected', cls: 'ev-no' },
+    'verified-alt': { label: 'Verified: changed', cls: 'ev-warn' },
+    'reported-alt': { label: 'Reported: changed', cls: 'ev-warn' },
     'reported-ok': { label: 'Reported: accepted', cls: 'ev-rep' },
     'reported-no': { label: 'Reported: rejected', cls: 'ev-repno' },
     'disputed': { label: 'Disputed', cls: 'ev-warn' },
@@ -92,9 +103,9 @@ window.PNL = window.PNL || {};
     var rec = items.filter(function (i) { return i.src === 'record'; });
     if (rec.length) {
       var ver = rec.filter(function (r) { return r.verified; }), pool = ver.length ? ver : rec;
-      var ok = pool.some(function (r) { return r.result === 'ok'; }), no = pool.some(function (r) { return r.result === 'no'; });
-      if (ok && no) return 'disputed';
-      return (ver.length ? 'verified' : 'reported') + (ok ? '-ok' : '-no');
+      var k = ['ok', 'no', 'alt'].filter(function (x) { return pool.some(function (r) { return r.result === x; }); });
+      if (k.length > 1) return 'disputed';
+      return (ver.length ? 'verified' : 'reported') + '-' + (k[0] || 'ok');
     }
     var you = items.filter(function (i) { return i.src === 'you'; }).sort(function (a, b) { return b.ts - a.ts; });
     return you.length ? 'yours-' + you[0].res : 'none';
@@ -149,7 +160,7 @@ window.PNL = window.PNL || {};
   /* ---------- sharing ---------- */
   C.records = function (tests) {
     return tests.map(function (t) {
-      var r = { text: t.text, result: t.res === 'no' ? 'no' : 'ok', game: t.game || '', platform: t.platform || '', device: t.device || '', tested: new Date(t.ts || Date.now()).toISOString().slice(0, 10), source: 'community', verified: false, evidence: '', note: (t.res === 'alt' ? 'Accepted but changed' + (t.alt ? ' to: ' + t.alt : '') + '. ' : '') + (t.note || '') };
+      var r = { text: t.text, result: t.res, game: t.game || '', platform: t.platform || '', device: t.device || '', tested: new Date(t.ts || Date.now()).toISOString().slice(0, 10), source: 'community', verified: false, evidence: '', note: (t.alt ? 'Result: ' + t.alt + '. ' : '') + (t.note || '') };
       if (t.target) r.target = t.target; return r;
     });
   };

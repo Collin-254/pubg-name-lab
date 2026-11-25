@@ -34,14 +34,11 @@ PAGES = [
   ('guide.html', 'guide', 'PUBG Nickname Rules & Unicode Guide — What the Evidence Says | PUBG Name Lab',
    'Official PUBG Mobile nickname rules, what nobody has published, why fancy characters fail, how text is counted, and a checklist before you spend a Rename Card.',
    ['js/page-guide.js']),
-  ('rename.html', 'rename', 'Rename-Card Lab — Test a PUBG Name Before You Spend the Card | PUBG Name Lab',
-   'A guided test for your own phone: type your name into the in-game box without confirming, say what you see, and find the exact character that causes trouble before using a Rename Card.',
-   ['js/page-rename.js']),
   ('mynames.html', 'mynames', 'My Saved PUBG Names | PUBG Name Lab',
    'Your saved PUBG Mobile nicknames, stored in this browser only. Copy, inspect, open in Studio, record in-game test results, export or import.',
    ['js/library-data.js', 'js/page-mynames.js']),
 ]
-NAV = [('rename', 'Rename', 'rename.html'), ('discover', 'Discover', 'discover.html'), ('names', 'Collection', 'names.html'), ('studio', 'Studio', 'studio.html'),
+NAV = [('discover', 'Discover', 'discover.html'), ('names', 'Collection', 'names.html'), ('studio', 'Studio', 'studio.html'),
        ('inspect', 'Inspect', 'inspect.html'), ('library', 'Library', 'library.html'), ('compat', 'Compatibility', 'compatibility.html'), ('guide', 'Guide', 'guide.html')]
 HEART = '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" style="fill:none;stroke:currentColor;stroke-width:2"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.7 7.700 4 4.500 7.200 4.500c2 0 3.600 1.100 4.800 2.900 1.200-1.800 2.800-2.900 4.800-2.900 3.200 0 5.500 3.200 4.400 6.600-1.700 4.800-9.200 9.400-9.200 9.400Z"/></svg>'
 
@@ -115,7 +112,7 @@ FOOT = '''</main>
       <p><strong>PUBG NAME LAB</strong> · An independent nickname toolkit. Not affiliated with, endorsed by, or operated by PUBG MOBILE, Tencent or KRAFTON.</p>
       <p>Valid Unicode is not the same as accepted by the game. The in-game name field is the final test, and the <a href="compatibility.html">Compatibility</a> page shows exactly what is known, reported or untested.</p>
     </div>
-    <nav aria-label="Footer"><a href="discover.html">Discover</a><a href="names.html">Collection</a><a href="studio.html">Studio</a><a href="inspect.html">Inspect</a><a href="library.html">Library</a><a href="compatibility.html">Compatibility</a><a href="rename.html">Rename lab</a><a href="guide.html">Guide</a><a href="mynames.html">My names</a></nav>
+    <nav aria-label="Footer"><a href="discover.html">Discover</a><a href="names.html">Collection</a><a href="studio.html">Studio</a><a href="inspect.html">Inspect</a><a href="library.html">Library</a><a href="compatibility.html">Compatibility</a><a href="guide.html">Guide</a><a href="mynames.html">My names</a></nav>
   </div>
 </footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
