@@ -82,6 +82,8 @@ const CATS=[['all','All'],['latin','Latin & numbers'],['styled','Fancy letters']
 
 const BLANK=[
 {id:'blank',title:'Blank & invisible characters',desc:'Characters that draw nothing or only a gap. Many name fields reject, trim or strip them, and a blank-looking name is hard for other players, moderators and support to identify. Nothing here is confirmed to work in PUBG MOBILE. Shown by code point because there is nothing to see.',type:'blank',kw:'invisible blank empty space hangul filler zero width braille nbsp joiner spacer hidden',items:['ㅤ','⠀','ᅟ','ᅠ','ﾠ',' ',' ',' ',' ',' ',' ','　','​','‌','‍','⁠','﻿','͏']}
+,
+{id:'spacelike',title:'Reported space-lookalikes',desc:'Ordinary Latin letters with a macron, ogonek or similar mark. Players report that PUBG MOBILE draws some of them as a gap, which would be a font effect, not a real space. Unverified: no tested record exists yet. They are visible letters elsewhere, take 2 bytes each in UTF-8, and may count against a length limit.',type:'blank',kw:'space spacing gap blank lookalike macron ogonek name',chars:'īūēōįĪŪĒŌĮāĀ'}
 ];
 groups.push(...BLANK);
 groups.sort((a,b)=>ORDER.indexOf(a.type)-ORDER.indexOf(b.type));
