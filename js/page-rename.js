@@ -100,4 +100,37 @@
   }
   function render() { var f = [null, step1, step2, step3, step4][S.step]; root.replaceChildren.apply(root, f().filter(Boolean)); }
   render();
+
+  /* ---- ready-made batches ---- */
+  var st = function (t, id) { return P.applyStyle(t, id); };
+  var BATCHES = [
+    { id: 'space', label: 'Spaces and gaps', blurb: 'Players report that letters like ī, ū, ē, ō and į are drawn as gaps, and that special spaces may be stripped. Which one does your game treat as a space?', items: [
+      ['Cool Ghost', 'a normal space'], ['CoolīGhost', 'ī between words'], ['CoolūGhost', 'ū between words'], ['CoolēGhost', 'ē between words'], ['CoolōGhost', 'ō between words'], ['CoolįGhost', 'į between words'], ['CoolĪGhost', 'capital Ī'],
+      ['Cool　Ghost', 'ideographic space U+3000'], ['CoolㅤGhost', 'Hangul filler U+3164'], ['Cool⠀Ghost', 'braille blank U+2800'], ['Cool Ghost', 'no-break space U+00A0']] },
+    { id: 'wide', label: 'Wide and styled letters', blurb: 'Fullwidth letters look spaced out and take 3 bytes each. Do they, and the other styles, survive?', items: [
+      ['Baashi', 'plain, for comparison'], [st('Baashi', 'fullwidth'), 'fullwidth'], [st('Baashi', 'bold'), 'bold'], [st('Baashi', 'boldscript'), 'bold script'], [st('Baashi', 'fraktur'), 'gothic'], [st('Baashi', 'double'), 'double-struck'], [st('Baashi', 'smallcaps'), 'small caps'], [st('Baashi', 'circled'), 'circled'], [st('Baashi', 'canadian'), 'Canadian lookalike'], [st('Baashi', 'cjk'), 'CJK lookalike']] },
+    { id: 'frames', label: 'Frames and symbols', blurb: 'Brackets, stars and combining marks around a plain name.', items: [
+      ['『Ghost』', 'corner brackets'], ['【NX】Ghost', 'tag prefix'], ['★Ghost★', 'stars'], ['꧁Ghost꧂', 'ornate'], ['༺Ghost༻', 'wings'], ['ミ★Ghost★彡', 'kana frame'], ['Ghost×͜×', 'combining mark'], ['Ghost♛', 'crown'], ['Ghost⚡', 'emoji-capable symbol'], ['ᵍʰᵒˢᵗ', 'superscript letters']] },
+    { id: 'length', label: 'Length', blurb: 'Plain, accented, CJK and fullwidth names around the 14 mark. Where does the box stop you, and by which count?', items: [
+      ['AbcdefghijKLMN', '14 plain letters'], ['AbcdefghijKLMNO', '15 plain letters'], ['CīOīLīLīIīN', '11 visible, 16 bytes'], ['ĀĒĪŌŪĀĒ', '7 visible, 14 bytes'], ['ĀĒĪŌŪĀĒĪ', '8 visible, 16 bytes'], ['亗亗亗亗', '4 visible, 12 bytes'], ['亗亗亗亗亗', '5 visible, 15 bytes'], ['Ｂａａｓｈｉ', '6 visible, 18 bytes'], ['ＢａａｓｈｉＢ', '7 visible, 21 bytes']] }
+  ];
+  var bat = BATCHES[0];
+  function logged(text) { return C.tests().filter(function (t) { return t.text === text && !t.target; })[0]; }
+  function bRow(it) {
+    var text = it[0], row = h('div', { class: 'brow' }), cur = logged(text);
+    var alt = h('input', { class: 'field', placeholder: 'What did it become? (optional)', autocomplete: 'off', 'aria-label': 'What it became', hidden: true });
+    function mk(label, res, msg) { return h('button', { class: 'btn sm' + (cur && cur.res === res ? ' primary' : ''), type: 'button', onclick: function () {
+      if (res === 'alt' && alt.hidden) { alt.hidden = false; alt.focus(); P.toast('Type what you see, then tap Changed again'); return; }
+      C.addTest({ text: text, target: '', res: res, alt: res === 'alt' ? (alt.value.trim() ? 'changed to “' + alt.value.trim() + '”' : 'changed by the game') : res === 'no' ? 'rejected' : '', note: 'Typed in the name box from a ready-made batch' }); paintBatch(); } }, label); }
+    row.append(h('div', { class: 'bn' }, h('div', { class: 'lg', onclick: function () { P.copy(text, 'Copied. Paste it into the game'); }, title: 'Tap to copy' }, text), h('small', null, it[1] + ' · ' + P.measure(text).g + ' visible, ' + P.measure(text).u8 + ' bytes')),
+      h('div', { class: 'bb' }, h('button', { class: 'btn sm', type: 'button', onclick: function () { P.copy(text, 'Copied. Paste it into the game'); } }, 'Copy'), mk('Accepted', 'ok'), mk('Changed', 'alt'), mk('Rejected', 'no'), cur ? ui.badge(cur.res === 'ok' ? 'yours-ok' : cur.res === 'no' ? 'yours-no' : 'yours-alt', cur.res === 'ok' ? 'Accepted' : cur.res === 'no' ? 'Rejected' : 'Changed') : null), alt);
+    return row;
+  }
+  function paintBatch() {
+    $('#bBlurb').textContent = bat.blurb; var box = $('#bList'); box.replaceChildren.apply(box, bat.items.map(bRow));
+    var n = bat.items.filter(function (it) { return logged(it[0]); }).length; $('#bProg').textContent = n + ' of ' + bat.items.length + ' tested';
+  }
+  ui.chips($('#bChips'), BATCHES.map(function (b) { return [b.id, b.label]; }), bat.id, function (id) { bat = BATCHES.filter(function (b) { return b.id === id; })[0]; paintBatch(); });
+  $('#bSubmit').addEventListener('click', function () { var t = C.tests(); if (!t.length) { P.toast('Test a name first'); return; } var r = C.issueURL(t); if (r.copied) P.copy(r.json, 'Results copied. Paste them into the issue'); window.open(r.url, '_blank', 'noopener'); });
+  paintBatch();
 })(window.PNL);

@@ -58,6 +58,13 @@ try{var t=localStorage.getItem('pnl-theme');if(t!=='dark'&&t!=='light')t=matchMe
   <div class="note" style="margin-top:22px;max-width:52em"><strong>Does testing use the card?</strong>Typing into the name box and looking at it should not, because the card is spent when you press the final confirm button. Do not press confirm during the tests. Some checks, such as a name already taken or a word filter, may only run on confirm, so a good preview is encouraging, not a guarantee.</div>
   <div class="rwiz" id="rWiz" aria-live="polite" style="margin-top:28px"></div>
 </section>
+<section class="wrap section tight" id="batches" aria-labelledby="h-b">
+  <div class="section-head"><div><div class="kicker"><b>Ready-made names</b> · Paste and report</div><h2 id="h-b">Names to paste into the game</h2></div><p>Pick a batch, copy each name into the in-game box, and tap what happened: accepted, changed or rejected. Your answers are saved, and they build a picture of what your game allows.</p></div>
+  <div class="chips wrapchips" id="bChips" role="group" aria-label="Batch"></div>
+  <p class="fine" id="bBlurb" style="margin:2px 0 14px"></p>
+  <div class="log" id="bList"></div>
+  <div class="actions"><span class="status" id="bProg" style="margin:0;align-self:center"></span><button class="btn sm primary" id="bSubmit" type="button">Submit my results</button><a class="btn sm" href="compatibility.html#log">See my log</a></div>
+</section>
 <section class="wrap section tight" aria-labelledby="h-r2">
   <div class="section-head"><div><div class="kicker"><b>Your game</b> · Optional</div><h2 id="h-r2">About this phone</h2></div><p>Saved with every result so a test means something later. The game version is in the game settings.</p></div>
   <div class="two-col" style="max-width:760px;grid-template-columns:repeat(3,minmax(0,1fr))">
