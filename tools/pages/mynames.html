@@ -1,0 +1,13 @@
+<section class="wrap hero" aria-labelledby="h1">
+  <div class="phead">
+    <div><div class="kicker"><b>My names</b> · <span id="mCount">0 saved</span></div><h1 id="h1">Your <em>shortlist</em></h1></div>
+    <p>Saved in this browser only. Nothing is uploaded. Back them up with Export, and record what happened when you tried each one in-game.</p>
+  </div>
+  <div class="toolbar" style="margin-top:24px">
+    <button class="btn sm" id="mExport" type="button">Export names</button>
+    <label class="btn sm" for="mImport" style="cursor:pointer">Import</label><input id="mImport" type="file" accept="application/json,.json" class="vh">
+    <button class="btn sm danger" id="mClear" type="button">Remove all</button>
+  </div>
+  <div class="names" id="mNames" role="list" aria-label="Saved names"></div>
+  <div class="emptystate" id="mEmpty" hidden><b>Nothing saved yet</b>Tap the ♡ on any name in <a href="discover.html">Discover</a>, the <a href="names.html">Collection</a> or <a href="studio.html">Studio</a>.</div>
+</section>

@@ -1,0 +1,27 @@
+<section class="wrap hero" aria-labelledby="h1">
+  <div class="phead">
+    <div><div class="kicker"><b>Collection</b> · <span id="nTotal">Curated names</span></div><h1 id="h1">Ready-made names, <em>hand-picked</em></h1></div>
+    <p>Every name here is written by hand, not generated, and none is repeated. Search, filter by what it is made of, sort, then copy, save, open in Studio or inspect the characters.</p>
+  </div>
+  <div class="filters">
+    <div class="searchbox"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><label class="vh" for="nSearch">Search names</label><input type="search" id="nSearch" placeholder="Search names or categories…" autocomplete="off" spellcheck="false"></div>
+    <div class="chips" id="nCats" role="group" aria-label="Category"></div>
+  </div>
+  <div class="toolbar" style="margin-top:6px">
+    <label class="vh" for="nFilter">Filter by make-up</label>
+    <select class="field" id="nFilter" style="max-width:240px;flex:0 1 240px">
+      <option value="">Any make-up</option><option value="short">Short (6 or fewer)</option><option value="one">One word</option><option value="plain">Plain letters only</option>
+      <option value="styled">Styled letters</option><option value="symbols">Has symbols</option><option value="nonlatin">Other alphabets</option><option value="saved">Saved by me</option>
+    </select>
+    <label class="vh" for="nSort">Sort</label>
+    <select class="field" id="nSort" style="max-width:240px;flex:0 1 240px">
+      <option value="">Curated order</option><option value="az">A to Z</option><option value="short">Shortest first</option><option value="long">Longest first</option><option value="u16">Fewest UTF-16 units</option>
+    </select>
+    <button class="btn sm" id="nReset" type="button" hidden>Reset</button>
+  </div>
+  <p class="status" id="nStatus" role="status" aria-live="polite" style="margin-top:4px"></p>
+  <p class="fine" id="nBlurb" style="margin:6px 0 0"></p>
+  <div class="names" id="nNames" role="list" aria-label="Names"></div>
+  <div class="more"><button class="btn" id="nMore" type="button" hidden>Show more</button></div>
+  <p class="fine">Names are ideas, not reserved. Availability and in-game acceptance are not guaranteed, and any name using symbols or non-Latin letters should be tested in your own name field.</p>
+</section>

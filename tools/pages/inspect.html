@@ -1,0 +1,22 @@
+<section class="wrap hero" aria-labelledby="h1">
+  <div class="phead">
+    <div><div class="kicker"><b>Inspect</b> · Unicode intelligence</div><h1 id="h1">See what a name <em>is made of</em></h1></div>
+    <p>Paste any nickname. Every character gets its code point, Unicode name, script, encoding and warnings for invisible, lookalike or mixed-script characters. Nothing leaves your browser.</p>
+  </div>
+  <div class="gen">
+    <div class="genbox"><label class="vh" for="iIn">Nickname to inspect</label><input id="iIn" type="text" maxlength="120" placeholder="Paste or type a name…" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"><button class="btn sm" id="iClear" type="button" hidden>Clear</button></div>
+    <div class="actions" style="margin-top:10px"><button class="btn sm" id="iCopy" type="button">Copy name</button><button class="btn sm" id="iLink" type="button">Copy link</button><a class="btn sm" id="iStudio" href="studio.html">Open in Studio</a><a class="btn sm" id="iTest" href="compatibility.html">Test in-game</a>
+      <span class="muted" style="font-size:13px;align-self:center">Try:</span>
+      <button class="chip" type="button" data-ex="Ghost×͜×">Ghost×͜×</button><button class="chip" type="button" data-ex="𝐊𝐢𝐧𝐠">𝐊𝐢𝐧𝐠</button><button class="chip" type="button" data-ex="Раul">Раul (Cyrillic)</button><button class="chip" type="button" data-ex="ㅤㅤ">blank</button></div>
+  </div>
+  <div class="section tight" id="iOut" aria-live="polite"></div>
+</section>
+<section class="wrap section" aria-labelledby="h-cmp">
+  <div class="section-head"><div><div class="kicker"><b>Compare</b> · Lookalikes</div><h2 id="h-cmp">Why do these look the same?</h2></div><p>Type two characters that look alike. The tool shows why they are different to a computer and why that can matter for a name.</p></div>
+  <div class="pair" style="max-width:520px;grid-template-columns:1fr auto 1fr">
+    <div><label class="lbl" for="cA">First</label><input class="field" id="cA" maxlength="12" value="a" autocomplete="off" spellcheck="false"></div>
+    <span class="muted" style="padding-bottom:10px">vs</span>
+    <div><label class="lbl" for="cB">Second</label><input class="field" id="cB" maxlength="12" value="а" autocomplete="off" spellcheck="false"></div>
+  </div>
+  <div id="cOut" aria-live="polite" style="margin-top:20px"></div>
+</section>

@@ -1,0 +1,25 @@
+<section class="wrap hero" aria-labelledby="h1">
+  <div class="phead">
+    <div><div class="kicker"><b>Library</b> · <span id="lTotal">2,700+ characters</span></div><h1 id="h1">Every character, <em>named and checked</em></h1></div>
+    <p>Click a character to add it to your working name and see its code point, Unicode name, script and evidence level. Search by word, character, code point like U+2605, or Unicode name.</p>
+  </div>
+  <div class="filters">
+    <div class="searchbox"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><label class="vh" for="lSearch">Search the library</label><input type="search" id="lSearch" placeholder="Search: star, Greek, U+2605, ★, heart…" autocomplete="off" spellcheck="false"></div>
+    <div class="chips" id="lCats" role="group" aria-label="Category"></div>
+  </div>
+  <p class="status" id="lStatus" role="status" aria-live="polite" style="margin-top:4px"></p>
+  <div class="lib">
+    <div id="lGrid"></div>
+    <aside class="inspector" id="lInsp" aria-label="Character inspector"></aside>
+  </div>
+</section>
+<div class="bar-fixed" role="region" aria-label="Working name">
+  <div class="bar-in">
+    <span class="kicker">Working name</span>
+    <div class="bar-name ph" id="lBarName">Click characters to build a name</div>
+    <button class="btn sm" id="lBack" type="button" aria-label="Delete last character">⌫</button>
+    <button class="btn sm" id="lInspect" type="button">Inspect</button>
+    <a class="btn sm" id="lStudio" href="studio.html">Studio</a>
+    <button class="btn sm primary" id="lCopy" type="button">Copy</button>
+  </div>
+</div>

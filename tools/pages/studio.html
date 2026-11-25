@@ -1,0 +1,75 @@
+<section class="wrap hero" aria-labelledby="h1">
+  <div class="phead">
+    <div><div class="kicker"><b>Studio</b> · Nickname builder</div><h1 id="h1">Build it <em>part by part</em></h1></div>
+    <p>Type one word or several, give each its own letter style, wrap it in a frame, and watch the character count and warnings update as you go. Undo is Ctrl+Z.</p>
+  </div>
+</section>
+<section class="wrap" style="margin-top:28px" aria-label="Builder">
+  <div class="bench">
+    <div>
+      <div class="stack">
+        <div>
+          <div class="rangehead"><span class="lbl">Parts</span><span class="fine" style="margin:0" id="sCount"></span></div>
+          <div class="stack" id="sSegs" style="gap:8px"></div>
+          <div class="actions" style="margin-top:10px"><button class="btn sm" id="sAdd" type="button">Add a part</button>
+            <label class="vh" for="sCase">Letter case</label>
+            <select class="field" id="sCase" style="width:auto;padding-top:6px;padding-bottom:6px">
+              <option value="">Case: as typed</option><option value="upper">UPPER</option><option value="lower">lower</option><option value="title">Title Case</option><option value="alt">aLtErNaTe</option>
+            </select></div>
+        </div>
+        <div class="pair">
+          <div><label class="lbl" for="sL">Left symbol</label><input class="field" id="sL" type="text" maxlength="20" autocomplete="off" spellcheck="false" placeholder="e.g. 『"></div>
+          <span class="muted" aria-hidden="true" style="padding-bottom:10px">name</span>
+          <div><label class="lbl" for="sR">Right symbol</label><input class="field" id="sR" type="text" maxlength="20" autocomplete="off" spellcheck="false" placeholder="e.g. 』"></div>
+        </div>
+        <div class="two-col">
+          <div><label class="lbl" for="sP">Prefix</label><input class="field" id="sP" type="text" maxlength="20" autocomplete="off" spellcheck="false" placeholder="e.g. 【NX】"></div>
+          <div><label class="lbl" for="sX">Suffix</label><input class="field" id="sX" type="text" maxlength="20" autocomplete="off" spellcheck="false" placeholder="e.g. 07"></div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="sCopy" type="button">Copy name</button>
+        <button class="btn heart" id="sFav" type="button" aria-label="Save to My names" aria-pressed="false">♡</button>
+        <button class="btn" id="sUndo" type="button">Undo</button>
+        <button class="btn" id="sRedo" type="button">Redo</button>
+        <button class="btn" id="sShare" type="button">Copy link</button>
+        <button class="btn" id="sReset" type="button">Reset</button>
+      </div>
+    </div>
+    <div>
+      <div class="stage" aria-live="polite"><span class="kicker">Preview</span><div class="stage-name ph" id="sStage">YourName</div><small id="sSub">Tap the preview to copy</small></div>
+      <dl class="metrics" aria-label="Length measures">
+        <div class="metric"><dd id="mG">0</dd><dt>visible characters</dt></div>
+        <div class="metric"><dd id="mC">0</dd><dt>code points</dt></div>
+        <div class="metric"><dd id="mU">0</dd><dt>UTF-16 units</dt></div>
+        <div class="metric"><dd id="mB">0</dd><dt>UTF-8 bytes</dt></div>
+      </dl>
+      <ul class="checks" id="sChecks" aria-label="Checks"></ul>
+      <div class="actions"><button class="btn sm" id="sInspect" type="button">Inspect every character</button><a class="btn sm" id="sTest" href="compatibility.html">Test in-game</a></div>
+    </div>
+  </div>
+  <div class="toolbox">
+    <div class="tabs" role="tablist" aria-label="Builder tools">
+      <button class="tab" role="tab" id="tabStyles" aria-controls="pStyles" aria-selected="true" type="button">Letter styles</button>
+      <button class="tab" role="tab" id="tabFrames" aria-controls="pFrames" aria-selected="false" type="button">Frames</button>
+      <button class="tab" role="tab" id="tabSyms" aria-controls="pSyms" aria-selected="false" type="button">Symbols</button>
+    </div>
+    <div class="tabpanel" id="pStyles" role="tabpanel" aria-labelledby="tabStyles">
+      <div class="toolbar"><label class="vh" for="gStyleQ">Search styles</label><input class="field" type="search" id="gStyleQ" placeholder="Search styles: bold, gothic, circle…" autocomplete="off"></div>
+      <div class="chips" id="gStyleCats" role="group" aria-label="Style category"></div>
+      <p class="fine" id="gStyleFor" style="margin:0 0 10px"></p>
+      <div class="gal" id="gStyles"></div>
+    </div>
+    <div class="tabpanel" id="pFrames" role="tabpanel" aria-labelledby="tabFrames" hidden>
+      <p class="fine" style="margin:0 0 10px">A frame sets the left and right symbols. You can still edit them above.</p>
+      <div class="gal" id="gFrames"></div>
+    </div>
+    <div class="tabpanel" id="pSyms" role="tabpanel" aria-labelledby="tabSyms" hidden>
+      <div class="toolbar"><label class="vh" for="gSymQ">Search symbols</label><input class="field" type="search" id="gSymQ" placeholder="Search: star, heart, arrow, bracket…" autocomplete="off"></div>
+      <p class="fine" id="gSymFor" style="margin:0 0 10px"></p>
+      <div class="chips" id="gRecent" role="group" aria-label="Recently used" hidden></div>
+      <div id="gSyms"></div>
+      <p class="fine">Blank and invisible characters are in the <a href="library.html?c=blank">Library</a>, with a warning. They are not offered here.</p>
+    </div>
+  </div>
+</section>

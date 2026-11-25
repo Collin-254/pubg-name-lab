@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://pubg-name-lab.vercel.app/sitemap.xml

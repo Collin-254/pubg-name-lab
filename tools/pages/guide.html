@@ -1,0 +1,102 @@
+<section class="wrap hero" aria-labelledby="h1">
+  <div class="phead"><div><div class="kicker"><b>Guide</b> · Rules &amp; reference</div><h1 id="h1">What the <em>evidence</em> says</h1></div><p>Official statements, the gaps nobody has filled, and the technical reasons fancy characters sometimes fail. Kept separate from opinion on purpose.</p></div>
+</section>
+<section class="wrap section" id="rules" aria-labelledby="h-rules">
+  <div class="section-head">
+    <div><div class="kicker"><b>01</b> · What the evidence says</div><h2 id="h-rules">Naming rules &amp; restrictions</h2></div>
+    <p>Officially documented facts are separated from community claims and technical caveats.</p>
+  </div>
+  <aside class="note" aria-label="Accuracy note" style="margin-bottom:34px;max-width:46em">
+    <strong>Accuracy note</strong>
+    PUBG MOBILE does not publish a complete public whitelist of accepted nickname characters. This library lists Unicode characters and useful candidates; it does not claim every item has been accepted by the game. The in-game name field is the final compatibility test.
+  </aside>
+  <h3 class="ledger-title">What PUBG MOBILE has said</h3>
+  <ul class="ledger">
+    <li class="row"><span><span class="tag official">Official support</span></span><h3>Rename Card required</h3><p>PUBG MOBILE Help Center says an in-game nickname can be changed using a Rename Card. Its current help article describes obtaining one through Growth Missions or the Shop.</p></li>
+    <li class="row"><span><span class="tag official">Official support</span></span><h3>Daily rename limit</h3><p>The Help Center says a Rename Card can be used to change the nickname once per day. Check the live in-game instructions because features can change.</p></li>
+    <li class="row"><span><span class="tag official">Developer statement</span></span><h3>Numbers-only names</h3><p>In a developer talk, PUBG MOBILE said it would prevent nicknames consisting only of numbers. This is not a ban on using digits alongside letters.</p></li>
+    <li class="row"><span><span class="tag official">Official rules</span></span><h3>Inappropriate names</h3><p>PUBG MOBILE rules prohibit offensive or inappropriate content. Names may be acted on if they are abusive, sexually explicit, discriminatory, impersonate staff, or create other prohibited impressions.</p></li>
+  </ul>
+  <h3 class="ledger-title">What nobody has published</h3>
+  <ul class="ledger">
+    <li class="row"><span><span class="tag caution">Not officially specified</span></span><h3>Maximum length</h3><p>A universal character limit and the exact counting method are not clearly stated in the official help page. Online claims such as “14 characters” should be treated as practical reports, not a guaranteed official specification.</p></li>
+    <li class="row"><span><span class="tag caution">Not officially specified</span></span><h3>Spaces &amp; punctuation</h3><p>There is no complete official public character whitelist. A symbol's presence in Unicode does not prove the PUBG nickname field accepts it. Test the exact name in-game.</p></li>
+    <li class="row"><span><span class="tag caution">Not officially specified</span></span><h3>Emoji &amp; invisible characters</h3><p>Emoji, zero-width characters and unusual formatting marks may be rejected, stripped, counted unexpectedly or render differently. This library does not recommend relying on invisible characters.</p></li>
+    <li class="row"><span><span class="tag unknown">Important distinction</span></span><h3>Unique name availability</h3><p>A character-valid nickname may still be unavailable or blocked. Character acceptance, name availability and policy compliance are separate checks.</p></li>
+  </ul>
+</section>
+<section class="wrap section" id="reference" aria-labelledby="h-ref">
+  <div class="section-head">
+    <div><div class="kicker"><b>02</b> · Technical reference</div><h2 id="h-ref">Why some fancy characters fail</h2></div>
+    <p>Unicode assigns code points to characters across writing systems and symbol blocks. The game decides which input it accepts, how it counts the name, and which fonts are available to display it.</p>
+  </div>
+  <div class="ref">
+    <div>
+      <section>
+        <h3>Unicode is not the same as PUBG compatibility</h3>
+        <p>Each of these is a valid Unicode character. None of them is a promise that the game will take it.</p>
+        <div class="tablewrap"><table>
+          <thead><tr><th scope="col">Example</th><th scope="col">Code point</th><th scope="col">What it is</th><th scope="col">UTF-16</th><th scope="col">UTF-8</th></tr></thead>
+          <tbody id="refBody">
+            <tr data-ch="A"><td class="g">A</td><td class="m">U+0041</td><td>Basic Latin capital letter</td><td class="m u16"></td><td class="m u8"></td></tr>
+            <tr data-ch="7"><td class="g">7</td><td class="m">U+0037</td><td>ASCII digit</td><td class="m u16"></td><td class="m u8"></td></tr>
+            <tr data-ch="★"><td class="g">★</td><td class="m">U+2605</td><td>Black star symbol</td><td class="m u16"></td><td class="m u8"></td></tr>
+            <tr data-ch="ツ"><td class="g">ツ</td><td class="m">U+30C4</td><td>Katakana letter</td><td class="m u16"></td><td class="m u8"></td></tr>
+            <tr data-ch="亗"><td class="g">亗</td><td class="m">U+4E97</td><td>CJK unified ideograph</td><td class="m u16"></td><td class="m u8"></td></tr>
+            <tr data-ch="𝐀"><td class="g">𝐀</td><td class="m">U+1D400</td><td>Mathematical bold capital A</td><td class="m u16"></td><td class="m u8"></td></tr>
+          </tbody>
+        </table></div>
+      </section>
+      <section>
+        <h3>Three ways text can be counted</h3>
+        <ul class="def">
+          <li><b>Code points:</b> Unicode character values.</li>
+          <li><b>UTF-16 code units:</b> A common programming representation; some characters use two units.</li>
+          <li><b>Grapheme clusters:</b> What people perceive as one displayed character; a combined emoji can contain several code points.</li>
+        </ul>
+        <p style="margin-top:14px">Which of these PUBG MOBILE uses for its length limit is not published. A report of a name with 11 visible characters being refused against a 14-character limit fits a byte count (it was 16 UTF-8 bytes), so every tool here shows all four and the generators count the strictest by default.</p>
+      </section>
+      <section>
+        <h3>Unicode normalization</h3>
+        <p>Compatibility normalization such as NFKC can convert some styled characters to ordinary letters. There is no confirmed public statement that PUBG MOBILE applies NFKC to every nickname. The builder warns you when NFKC would change your name, and the inspector shows the result for each character.</p>
+      </section>
+      <section>
+        <h3>Why lookalike letters are not the same letter</h3>
+        <p>Cyrillic “а”, Greek “ο” and Latin “a” or “o” can be pixel-identical, yet they are different characters with different code points, scripts and byte lengths. A name that mixes them can be impossible to search for, can break a byte-based length limit and is often what moderation tools look for. The <a href="inspect.html">Inspect</a> page compares any two characters side by side.</p>
+      </section>
+      <section>
+        <h3>Blank and invisible characters</h3>
+        <p>Characters such as U+3164 (Hangul filler), U+2800 (braille blank) and zero-width spaces draw nothing. Online lists claim they give a blank name. No official PUBG MOBILE statement supports that, and games commonly trim, strip or reject them because blank names make reporting and support harder. The <a href="library.html?c=blank">Library</a> lists them by code point and the <a href="compatibility.html?pack=blank">Compatibility</a> page lets you test each one yourself. Treat any claim, including ours, as unverified until you see it work in your own game.</p>
+      </section>
+    </div>
+    <aside class="checklist" aria-labelledby="h-check">
+      <div class="kicker">Quick checklist</div>
+      <h3 id="h-check" style="font:500 24px/1.2 var(--serif);margin:8px 0 0">Before you confirm a rename</h3>
+      <div class="progress"><span class="fine" style="margin:12px 0 0" id="checkCount">0 of 6 confirmed</span></div>
+      <div class="bar-track" aria-hidden="true"><div class="bar-fill" id="checkBar"></div></div>
+      <ul id="checklist">
+        <li><label><input type="checkbox"><span>Keep the name respectful and avoid offensive, discriminatory or impersonating content.</span></label></li>
+        <li><label><input type="checkbox"><span>Do not use a numeric-only nickname.</span></label></li>
+        <li><label><input type="checkbox"><span>Paste the exact final name into PUBG MOBILE's rename field and check whether it is accepted.</span></label></li>
+        <li><label><input type="checkbox"><span>Check how it appears on your own device and, if possible, another device.</span></label></li>
+        <li><label><input type="checkbox"><span>Remember that a name can be accepted by the input field but still be unavailable or subject to moderation.</span></label></li>
+        <li><label><input type="checkbox"><span>Confirm the name before consuming a Rename Card; the official Help Center describes a once-per-day rename limit.</span></label></li>
+      </ul>
+    </aside>
+  </div>
+</section>
+<section class="wrap section" id="sources" aria-labelledby="h-sources">
+  <div class="section-head">
+    <div><div class="kicker"><b>03</b> · Primary references</div><h2 id="h-sources">Sources &amp; verification</h2></div>
+    <p>Everything marked official above traces back to one of these. Third-party character lists are not treated as official approval.</p>
+  </div>
+  <ol class="sources">
+    <li><div><a href="https://pubgmobile.helpshift.com/hc/en/3-pubg-mobile/faq/120-how-do-i-change-my-in-game-nickname/" target="_blank" rel="noopener">PUBG MOBILE Help Center — How do I change my in-game nickname?</a><span>Official Rename Card and daily-change guidance.</span></div></li>
+    <li><div><a href="https://www.pubgmobile.com/en/event/devtalk/" target="_blank" rel="noopener">PUBG MOBILE — Developer Talk</a><span>Developer response about preventing nicknames consisting only of numbers.</span></div></li>
+    <li><div><a href="https://www.pubgmobile.com/webplat/info/news_version3/35372/57705/57706/57821/57822/57823/m22591/202109/901336.shtml" target="_blank" rel="noopener">PUBG MOBILE — Report Player and Block Player Function Descriptions</a><span>Explains prohibited offensive content in nicknames and other user-generated fields.</span></div></li>
+    <li><div><a href="https://www.pubgmobile.com/PK/terms.shtml" target="_blank" rel="noopener">PUBG MOBILE — Terms of Service</a><span>Includes restrictions on impersonation and intellectual-property misuse.</span></div></li>
+    <li><div><a href="https://www.unicode.org/standard/standard.html" target="_blank" rel="noopener">The Unicode Standard</a><span>Primary reference for Unicode characters and scripts.</span></div></li>
+    <li><div><a href="https://www.unicode.org/reports/tr15/" target="_blank" rel="noopener">Unicode Standard Annex #15 — Normalization Forms</a><span>Explains Unicode normalization.</span></div></li>
+  </ol>
+  <p class="review">Last research review: 23 November 2026. Official game rules and the nickname validator can change.</p>
+</section>

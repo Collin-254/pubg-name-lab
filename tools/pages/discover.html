@@ -1,0 +1,46 @@
+<section class="wrap hero" aria-labelledby="h1">
+  <div class="phead">
+    <div><div class="kicker"><b>Discover</b> · Name generator</div><h1 id="h1">Find a name that <em>fits you</em></h1></div>
+    <p>Pick a theme and get eight fresh ideas. Lock the words you like, reroll the rest, add a frame if you want one, and copy. Everything is made in your browser.</p>
+  </div>
+  <div class="disc">
+    <aside class="panel sticky" aria-label="Generator controls">
+      <div>
+        <span class="lbl" id="lblTheme">Theme</span>
+        <div class="chips wrapchips" id="dTheme" role="group" aria-labelledby="lblTheme"></div>
+        <p class="fine" id="dBlurb" style="margin-top:2px"></p>
+      </div>
+      <button class="btn primary" id="dShuffle" type="button">Shuffle unlocked parts</button>
+      <details id="dOpts" class="opts">
+        <summary class="btn sm" style="width:100%;justify-content:space-between">More options <span class="muted" id="dOptsHint"></span></summary>
+        <div class="stack" style="margin-top:16px">
+          <div><label class="lbl" for="dMy">Keep my word</label><input class="field" id="dMy" type="text" maxlength="14" placeholder="e.g. Kestrel" autocomplete="off" spellcheck="false"><p class="fine" style="margin-top:6px">It stays in every name. The rest is built around it.</p></div>
+          <div><label class="lbl" for="dStyle">Letter style</label><select class="field" id="dStyle"></select></div>
+          <div><label class="lbl" for="dFrame">Decoration</label><select class="field" id="dFrame"></select></div>
+          <div><label class="lbl" for="dJoin">Join words with</label><select class="field" id="dJoin"><option value="">Nothing (CamelCase)</option><option value="_">Underscore _</option><option value=".">Dot .</option></select></div>
+          <div>
+            <div class="rangehead"><label class="lbl" for="dLen" style="margin:0">Length limit</label><span class="rangeval" id="dLenVal"></span></div>
+            <input type="range" id="dLen" min="5" max="24" step="1" value="14">
+            <p class="fine" style="margin-top:6px">14 is a figure players quote, not an official limit. A reported name with 11 visible characters but 16 bytes was rejected as too long, so the game may count bytes, not what you see.</p>
+          </div>
+          <div><label class="lbl" for="dHow">Count length by</label><select class="field" id="dHow"><option value="strict">Strictest (safe, default)</option><option value="u8">UTF-8 bytes</option><option value="g">Visible characters</option></select></div>
+          <label class="check-line"><input type="checkbox" id="dNum"><span>Add a number at the end</span></label>
+        </div>
+      </details>
+    </aside>
+    <div>
+      <p class="status" id="dStatus" role="status" aria-live="polite" style="margin-top:0"></p>
+      <div class="names two" id="dNames" role="list" aria-label="Generated names"></div>
+      <div class="more"><button class="btn" id="dMore" type="button">Show 8 more</button></div>
+      <p class="fine">These are ideas, not reserved names. Another player may already have one, and the game decides what it accepts. Names with decorations use extra Unicode characters, so <a href="compatibility.html">test the exact name in-game</a> before you spend a Rename Card.</p>
+    </div>
+  </div>
+</section>
+<section class="wrap section tight" aria-labelledby="h-next">
+  <div class="tools" id="h-next">
+    <a class="tool" href="names.html"><span class="kicker">Collection</span><b>Browse curated names</b><span>Hand-picked, searchable and sortable.</span></a>
+    <a class="tool" href="studio.html"><span class="kicker">Studio</span><b>Build your own</b><span>Mix styles, frames and symbols part by part.</span></a>
+    <a class="tool" href="inspect.html"><span class="kicker">Inspect</span><b>Check every character</b><span>Code points, lookalikes and warnings.</span></a>
+    <a class="tool" href="mynames.html"><span class="kicker">My names</span><b>Your shortlist</b><span>Saved in this browser only.</span></a>
+  </div>
+</section>

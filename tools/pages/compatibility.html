@@ -1,0 +1,37 @@
+<section class="wrap hero" aria-labelledby="h1">
+  <div class="phead">
+    <div><div class="kicker"><b>Compatibility</b> · Evidence, not guesses</div><h1 id="h1">What is <em>known</em>, and how well</h1></div>
+    <p>A character being valid Unicode does not mean PUBG MOBILE accepts it. This page keeps four levels of evidence apart, shows what is official and what nobody has published, and lets you record your own in-game tests.</p>
+  </div>
+  <div class="section tight"><div class="ladder" id="cLadder"></div>
+  <p class="fine">Nothing on this site is marked verified yet. Results you record below are shown as “You” and are never presented as fact.</p></div>
+</section>
+<section class="wrap section" id="check" aria-labelledby="h-check">
+  <div class="section-head"><div><div class="kicker"><b>01</b> · Check a name</div><h2 id="h-check">Where does this name stand?</h2></div><p>Type a name to see which evidence level each character has, plus length counts and warnings.</p></div>
+  <div class="genbox"><label class="vh" for="cIn">Nickname to check</label><input id="cIn" type="text" maxlength="120" placeholder="Type or paste a name…" autocomplete="off" autocapitalize="off" spellcheck="false"></div>
+  <div class="section tight" id="cOut" aria-live="polite"></div>
+</section>
+<section class="wrap section" id="rules" aria-labelledby="h-pol">
+  <div class="section-head"><div><div class="kicker"><b>02</b> · Official, and not published</div><h2 id="h-pol">What PUBG MOBILE has said</h2></div><p>Each item links to its source and shows when it was last checked. Rules can change.</p></div>
+  <div id="cPolicy"></div>
+</section>
+<section class="wrap section" id="lab" aria-labelledby="h-lab">
+  <div class="section-head"><div><div class="kicker"><b>03</b> · Test lab</div><h2 id="h-lab">Test it in your own game</h2></div><p>Pick a pack, type each probe name into the in-game rename field, and tell the lab what happened. Nothing is sent anywhere unless you choose to submit.</p></div>
+  <div class="two-col" style="max-width:760px;grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:22px">
+    <div><label class="lbl" for="cGame">Game version</label><input class="field" id="cGame" placeholder="e.g. 4.1.0" autocomplete="off"></div>
+    <div><label class="lbl" for="cPlat">Platform</label><select class="field" id="cPlat"><option>Android</option><option>iOS</option><option>Emulator</option></select></div>
+    <div><label class="lbl" for="cDev">Device</label><input class="field" id="cDev" placeholder="e.g. Galaxy S23" autocomplete="off"></div>
+  </div>
+  <div class="packs" id="cPacks"></div>
+  <div class="stepper" id="cStep" hidden></div>
+</section>
+<section class="wrap section" id="log" aria-labelledby="h-log">
+  <div class="section-head"><div><div class="kicker"><b>04</b> · Your results</div><h2 id="h-log">Test log</h2></div><p>Stored in this browser only. Export it, or send it to the project as a GitHub issue so a maintainer can add the results as community-reported records.</p></div>
+  <div class="actions" style="margin:0 0 14px"><button class="btn sm primary" id="cSubmit" type="button">Submit as GitHub issue</button><button class="btn sm" id="cExport" type="button">Export</button><label class="btn sm" for="cImport" style="cursor:pointer">Import</label><input id="cImport" type="file" accept="application/json,.json" class="vh"><button class="btn sm danger" id="cClear" type="button">Clear log</button></div>
+  <div class="log" id="cLog"></div>
+</section>
+<section class="wrap section" id="records" aria-labelledby="h-rec">
+  <div class="section-head"><div><div class="kicker"><b>05</b> · Published records</div><h2 id="h-rec">Community-reported and verified</h2></div><p>Only entries with a game version, platform and date appear here. Verified means reproduced with a screenshot or recording.</p></div>
+  <div class="log" id="cRecords"></div>
+  <p class="review">How a record is added: a report arrives as a GitHub issue, the maintainer checks the evidence, then pastes it into <code>PNL.COMPAT.records</code> in <code>js/compat.js</code>. Reports stay “community-reported” until reproduced.</p>
+</section>
