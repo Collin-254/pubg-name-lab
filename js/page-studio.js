@@ -69,7 +69,7 @@
     $('#mG').textContent = a.gCount; $('#mC').textContent = a.cpCount; $('#mU').textContent = a.u16; $('#mB').textContent = a.u8;
     $('#sChecks').replaceChildren.apply($('#sChecks'), text ? a.checks.slice(0, 6).map(function (c) { return h('li', { class: 'check ' + c.l }, h('span', { class: 'badge' }, c.b), h('b', null, c.t), h('p', null, c.d)); }) : [h('li', { class: 'empty' }, 'Type something to see length measures and warnings for the exact characters.')]);
     var on = text && P.favs.has(text), f = $('#sFav'); f.textContent = on ? '♥' : '♡'; f.setAttribute('aria-pressed', String(!!on));
-    $('#sTest').href = 'compatibility.html?t=' + encodeURIComponent(text);
+    $('#sTest').href = 'rename.html?t=' + encodeURIComponent(text);
     $('#sSub').textContent = text ? 'Tap the preview to copy' : 'Your name appears here';
     P.store.set(KEY, state);
     buttons();

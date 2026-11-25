@@ -70,7 +70,7 @@
     t.forEach(function (x) {
       box.append(h('div', { class: 'logrow' },
         h('div', { class: 'lg' }, x.text), ui.badge('yours-' + x.res, RES[x.res]),
-        h('small', null, (x.target ? 'Character ' + P.cpOf(x.target) + ' · ' : '') + (x.alt ? 'became “' + x.alt + '” · ' : '') + [x.game && 'v' + x.game, x.platform, x.device, new Date(x.ts).toISOString().slice(0, 10)].filter(Boolean).join(' · ')),
+        h('small', null, (x.target ? 'Character ' + P.cpOf(x.target) + ' · ' : '') + (x.alt ? 'became “' + x.alt + '” · ' : '') + [x.note, x.game && 'v' + x.game, x.platform, x.device, new Date(x.ts).toISOString().slice(0, 10)].filter(Boolean).join(' · ')),
         h('button', { class: 'btn sm', type: 'button', 'aria-label': 'Remove test of ' + x.text, onclick: function () { C.removeTest(x.id); } }, 'Remove')));
     });
     paintPacks();
